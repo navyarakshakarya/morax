@@ -91,4 +91,15 @@ export class UsersService {
       refreshToken: hashedRefreshToken,
     });
   }
+
+  async validateRefreshToken(
+    userId: string,
+    refreshToken: string,
+  ): Promise<boolean> {
+    const user = await this.findOne(userId);
+    if (!user || !user.refreshToken) {
+      return false;
+    }
+    return await bcrypt.compare(refreshToken, user.refreshToken);
+  }
 }

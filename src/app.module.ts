@@ -6,6 +6,7 @@ import configuration from './config/configuration';
 import { validate } from './config/env.validation';
 import { UsersModule } from './users/users.module';
 import { LoggerModule } from 'nestjs-pino';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -46,6 +47,7 @@ import { LoggerModule } from 'nestjs-pino';
     // Application modules
     CommonModule,
     UsersModule,
+    AuthModule,
   ],
 })
 export class AppModule {}
